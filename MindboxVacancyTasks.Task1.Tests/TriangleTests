@@ -15,4 +15,16 @@ public class TriangleTests
 
         Assert.That(result, Is.EqualTo(expected));
     }
+
+    [TestCase(3, 4, 5, true)]
+    [TestCase(6, 8, 10, true)]
+    [TestCase(4, 4, 4, false)]
+    public void isRightAngled(double a, double b, double c, bool expected)
+    {
+        Triangle tri = new(a, b, c);
+
+        bool result = tri.isRightAngled();
+
+        Assert.That(result, Is.EqualTo(expected));
+    }
 }
