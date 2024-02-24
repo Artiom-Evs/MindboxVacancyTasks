@@ -21,4 +21,15 @@ public class Triangle : ShapeBase
         double area = Math.Sqrt(p * (p - Side1Length) * (p - Side2Length) * (p - Side3Length));
         return area;
     }
+
+
+    public bool isRightAngled()
+    {
+        double[] sides = [Side1Length, Side2Length, Side3Length];
+        Array.Sort(sides);
+
+        bool isRightAngled = sides[2] * sides[2] == sides[0] * sides[0] + sides[1] * sides[1];
+
+        return isRightAngled;
+    }
 }
