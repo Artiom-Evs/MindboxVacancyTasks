@@ -1,0 +1,19 @@
+using MindboxVacancyTasks.Task1.Models;
+
+namespace MindboxVacancyTasks.Task1.Tests
+{
+    public class TriangleTests
+    {
+        [TestCase(3, 4, 5, 6)]
+        [TestCase(6, 8, 10, 24)]
+        [TestCase(4, 4, 4, 6.9282032302755088d)]
+        public void CalculateTriangleArea(double a, double b, double c, double expected)
+        {
+            Triangle tri = new(a, b, c);
+
+            double result = tri.CalculateArea();
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
+    }
+}
