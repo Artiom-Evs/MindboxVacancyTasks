@@ -1,10 +1,23 @@
-﻿namespace MindboxVacancyTasks.Task2
+﻿using MindboxVacancyTasks.Task2.Data;
+using MindboxVacancyTasks.Task2.Models;
+using MindboxVacancyTasks.Task2.Services;
+
+namespace MindboxVacancyTasks.Task2;
+
+internal static class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        using StoreDbContext context = new();
+
+        SeedData.EnsurePopulated(context);
+
+        StoreService store = new(context);
+        IQueryable<ProductCategoryRow> rows = store.GetProductsWithCategories();
+
+        foreach (var result in rows)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine($"{result.ProductName}\t{result.CategoryName}");
         }
     }
 }
